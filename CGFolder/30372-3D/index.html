@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+    <meta charset = "utf-8" />
+        <title>Veículo</title> 			
+        <script src="./lib/x3dom-full.js"></script>
+        <link rel="stylesheet" href="../lib/x3dom.css">
+        <style type = "text/css">
+
+            th {
+                padding: 1em;
+                background-color:#9F1C33;
+                color:white;
+            }
+            td {
+                padding: 0.5em;
+                background-color: #EEE;
+                width: 50%;
+                text-align: center;
+            }
+            table {
+                width:100%;
+            }
+            h1,h2,h3,h4 {
+                text-align: center;
+            }
+            </style>
+
+            <h2>Engenharia Informática - Computação Gráfica &mdash; 2016-17</h2>
+    </head>
+
+    <body> 
+        <h1>Trabalho em 3D &mdash; Aluno n.º 30372</h1> 
+        <table>
+        <tr>
+            <th>Original</th>
+            <th>Reprodução</th>
+        </tr>
+        <td><img src="./media/ape50.jpg" width = "450px" height = "450px"></img></td>
+        <td>
+        <x3d width='500px' height='500px'> 
+        <scene>
+            <switch whichCoice = "-1">
+                <cylinder def = "rod"
+                    radius = "0.05"
+                    height = "10.0" >
+                </cylinder>
+                <cone def = "cap"
+                    bottomRadius = "0.10"
+                    height = "0.5" >
+                </cone>
+                <Shape DEF = 'roda'>
+                    <Appearance>
+                        <Material diffuseColor="black"/>
+                    </Appearance>
+                    <Cylinder
+                        height = '0.5'
+                        radius = '0.4' >
+                    </Cylinder>
+                </Shape>
+                <Shape DEF = 'jante'>
+                    <Appearance>
+                        <Material diffuseColor="gray"/>
+                    </Appearance>
+                    <Cylinder
+                        height = '0.4'
+                        radius = '0.3' >
+                    </Cylinder>
+                </Shape>
+
+
+                <shape def = 'guarda_lamas'>
+                    <appearance>
+                        <material diffuseColor="0.8 0.8 0.8"> 
+                        </material>
+                    </appearance>
+                    <extrusion
+                        solid="false"
+                        crossSection="
+                            -0.65 0
+                            -0.55 0.3
+                            -0.35 0.55
+                            0.15 0.55
+                            0.35 0.3
+                            0.45 0
+                            0.45 -0.2
+                            
+                            0.36 -0.2
+                            0.36 0
+                            0.26 0.3
+                            0.06 0.46 
+                            -0.3 0.46
+                            -0.46 0.3
+                            -0.56 0 
+                            -0.65 0
+
+                            "
+                        spine="
+                            0 -0.5 0
+                            0 0.17 0"
+                    ></extrusion>
+                </shape>
+
+
+                <shape def = 'vidro_lateral'>
+                    <appearance>
+                        <ImageTexture url="./media/vidro2.png">
+                        <ImageTexture/>
+                    </appearance>
+                    <extrusion
+                        solid="false"
+                        crossSection="
+                            0.1 1
+                            0.6 1
+                            0.6 -0.1 
+                            -0.3 -0.2
+                            -0.4 0.1
+                            0.1 1
+                            "
+                        spine="
+                            0 0 0
+                            0 0.05 0"
+                    ></extrusion>
+                </shape>  
+
+                <shape def = painel_lateral>
+                    <appearance>
+                        <material
+                            diffuseColor = "darkslategray" >
+                        </material>
+                    </appearance>
+                    <box size = "2.45 0.05 0.2">
+                    </box>
+                </shape>
+
+                <shape def = para_choques>
+                    <appearance>
+                        <material
+                            diffuseColor = "dimgray" >
+                        </material>
+                    </appearance>
+                    <box size = "2 0.08 0.4">
+                    </box>
+                </shape>   
+
+<!-- cena onde ta os piscas-->
+                <shape def = 'choques'>
+                    <appearance>
+                        <material diffuseColor="dimgray"> 
+                        </material>
+                    </appearance>
+                    <extrusion
+                        solid="false"
+                        crossSection="
+                            -0.05 0
+                            0.2 0
+                            0.3 0.2
+                            0.4 0.2
+                            0.4 0.4
+                            -0.05 0.4 
+                            -0.05 0
+                            "
+                        spine="
+                            0 0 0
+                            0 0.05 0"
+                    ></extrusion>
+                </shape> 
+
+
+                <shape def = 'para_choques_traseiro' >
+                    <appearance>
+                        <material
+                            diffuseColor = "gray" >
+                        </material>
+                    </appearance>
+                    <extrusion
+                        solid="false"
+                        crossSection="
+                            0 0
+                            0 0.4
+                            -0.35 0.4
+                            -0.2 0
+                            0 0
+                            "
+                        spine="
+                            0 0 0
+                            0 0.25 0"
+                    ></extrusion>
+                </shape> 
+
+                <shape def = 'piscas_frente' >
+                    <appearance>
+                        <ImageTexture url="./media/pisca.png">
+                        <ImageTexture/>
+                    </appearance>
+                    <extrusion
+                        solid="false"
+                        crossSection="
+                            0 0
+                            -0.2 0
+                            -0.2 1
+                            0.5 1
+                            0.5 0.8
+                            0 0.8
+                            0 0
+                            "
+                        spine="
+                            0 0 0
+                            0 0.5 0"
+                    ></extrusion>
+                </shape>
+
+                <shape def = farol>
+                    <appearance>
+                        <ImageTexture url="./media/farol2.png">
+                        <ImageTexture/>
+                    </appearance>
+                    <box size = "0.25 0.25 0.25">
+                    </box>
+                </shape> 
+
+                <shape def = pisca_traseiro>
+                    <appearance>
+                        <ImageTexture url="./media/pisca.png">
+                        <ImageTexture/>
+                    </appearance>
+                    <box size = "0.2 0.2 0.2">
+                    </box>
+                </shape>
+
+
+                <shape def = porta>
+                    <appearance>
+                        <material
+                                
+                                diffuseColor = "0.8 0.8 0.8" >
+                            </material>
+                    </appearance>
+                    <box size = "0.05 0.1 2">
+                    </box>
+                </shape>
+
+
+                <shape def = porta_baixo>
+                    <appearance>
+                        <material
+                                diffuseColor = "0.8 0.8 0.8" >
+                            </material>
+                    </appearance>
+                    <box size = "1.7 0.1 0.5">
+                    </box>
+                </shape>
+
+
+
+            </switch>
+
+
+<!--     **********    começa aqui a mota ***********                -->
+<!--     **********    começa aqui a mota ***********                -->
+            
+            <transform translation = "-0.3 0 0" def = "base">
+                <shape>
+                    <appearance>
+                        <material
+                            diffuseColor = "gray" >
+                        </material>
+                    </appearance>
+                    <box size = "2.6 1.4 0.6">
+                    </box>
+                </shape>
+            </transform>
+
+            <transform translation = "0.1 0 1.6" def = "caixa_atras">
+                <shape>
+                    <appearance>
+                        <material
+                            diffuseColor='darkolivegreen' >
+                        </material>
+                    </appearance>
+                    <box size = "2.6 2.6 2.6">
+                    </box>
+                </shape>
+            </transform>
+
+           
+<!-- parte do passageiro -->
+            <transform translation = "-2.9 0 1.1" def = "caixa_passa">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="darkolivegreen"> 
+                        </material>
+                    </appearance>
+                    <extrusion
+                        solid="false"
+                        crossSection="
+                            0 0
+                            0 -1.2
+                            1.6 -1.2 
+                            1.6 1.5
+                            0.8 1.5
+                            0 0
+                            "
+                        spine="
+                            0 -1 0
+                            0 1 0"
+                    ></extrusion>
+                </shape>
+            </transform>
+            
+
+
+       <!--  RODAS-->
+
+            <Transform translation = "0 1.1 -0.3" >
+                    <Shape USE = "roda"></Shape>
+            </Transform>
+            <Transform translation = "0 1.2 -0.3" >
+                    <Shape USE = "jante"></Shape>
+            </Transform>
+
+
+            <Transform translation = "0 -1.1 -0.3" >
+                    <Shape USE = "roda"></Shape>
+            </Transform>
+            <Transform translation = "0 -1.2 -0.3" >
+                    <Shape USE = "jante"></Shape>
+            </Transform>
+
+            
+            <Transform translation = "-3 0 -0.3" scale = " 1 0.7 1">
+                    <Shape USE = "roda"></Shape>
+            </Transform>
+
+            <Transform translation = "-3 0.025 -0.3" >
+                    <Shape USE = "jante"></Shape>
+            </Transform>
+            <Transform translation = "-3 -0.025 -0.3" >
+                    <Shape USE = "jante"></Shape>
+            </Transform>
+
+<!--  guarda lamas trazeiro-->
+
+             <Transform translation = "0.1 -0.88 -0.25" >
+                    <Shape USE = "guarda_lamas"></Shape>
+            </Transform>
+
+            <Transform translation = "0.1 1.2 -0.25" >
+                    <Shape USE = "guarda_lamas"></Shape>
+            </Transform>
+
+
+<!-- paineis laterais trazeiros -->
+
+            <Transform translation = "0.1 -1.3 2.75" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "0.1 -1.3 1.9" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "0.1 -1.3 1.6" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "0.1 -1.3 1.3" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+            
+            <Transform translation = "0.1 -1.3 1" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+            
+            <Transform translation = "0.1 -1.3 0.7" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "0.1 -1.3 0.4" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+<!-- paineis laterais trazeiros lado contrario-->
+
+             <Transform translation = "0.1 1.3 2.75" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "0.1 1.3 1.9" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "0.1 1.3 1.6" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "0.1 1.3 1.3" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+            
+            <Transform translation = "0.1 1.3 1" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+            
+            <Transform translation = "0.1 1.3 0.7" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "0.1 1.3 0.4" >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+
+<!-- paineis trazeiros-->
+
+            <Transform rotation='0 0 1 1.5708' translation = "1.4 0 0.4"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "1.4 0 0.7"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "1.4 0 1"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "1.4 0 1.3"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "1.4 0 1.6"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "1.4 0 1.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "1.4 0 2.75"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+ <!-- paineis frente-->
+
+            <Transform rotation='0 0 1 1.5708' translation = "-1.2 0 0.4"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "-1.2 0 0.7"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "-1.2 0 1"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "-1.2 0 1.3"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "-1.2 0 1.6"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "-1.2 0 1.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='0 0 1 1.5708' translation = "-1.2 0 2.75"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+   <!-- paineis de cima-->
+
+            <Transform rotation='1 0 0 1.5708' translation = "0.1 1.15 2.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='1 0 0 1.5708' translation = "0.1 0.9 2.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='1 0 0 1.5708' translation = "0.1 0.65 2.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='1 0 0 1.5708' translation = "0.1 0.4 2.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='1 0 0 1.5708' translation = "0.1 -0.4 2.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='1 0 0 1.5708' translation = "0.1 -0.65 2.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='1 0 0 1.5708' translation = "0.1 -0.9 2.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+            <Transform rotation='1 0 0 1.5708' translation = "0.1 -1.15 2.9"  >
+                    <Shape USE = "painel_lateral"></Shape>
+            </Transform>
+
+<!-- para choques frente-->
+            
+            <Transform rotation='0 0 1 1.5708' translation = "-2.9 0 0.8"  >
+                    <Shape USE = "para_choques"></Shape>
+            </Transform>
+
+
+            <Transform translation = "-2.9 -1.05 0.6"  >
+                    <Shape USE = "choques"></Shape>
+            </Transform>    
+
+            <Transform translation = "-2.9 1 0.6"  >
+                    <Shape USE = "choques"></Shape>
+            </Transform>
+
+<!-- para choques traseiro-->
+
+            <Transform translation = "1.4 -1.3 -0.1"  >
+                    <Shape USE = "para_choques_traseiro"></Shape>
+            </Transform>
+
+            <Transform translation = "1.4 1.05 -0.1"  >
+                    <Shape USE = "para_choques_traseiro"></Shape>
+            </Transform>
+
+
+            <Transform translation = "1.47 0 0"  >
+                <shape>
+                    <appearance>
+                        <material
+                            diffuseColor = "darkolivegreen" >
+                        </material>
+                    </appearance>
+                    <box size = ".15 2.6 0.25">
+                    </box>
+                </shape>
+
+            </Transform>
+
+
+<!-- portas-->
+            <Transform translation = "-2.4 -0.98 0.65" >
+                    <Shape USE = "porta"></Shape>
+            </Transform>
+
+            <Transform translation = "-2.4 0.98 0.65" >
+                    <Shape USE = "porta"></Shape>
+            </Transform>
+
+            <Transform translation = "-2.1 -0.98 -0.1" >
+                    <Shape USE = "porta_baixo"></Shape>
+            </Transform>
+
+            <Transform translation = "-2.1 0.98 -0.1" >
+                    <Shape USE = "porta_baixo"></Shape>
+            </Transform>
+
+            <Transform translation = "-2.9 0.7 -0.1" rotation = "0 0 1 4.7124" scale="0.4 0.4 1">
+                    <Shape USE = "porta_baixo"></Shape>
+            </Transform>
+
+            <Transform translation = "-2.9 -0.7 -0.1" rotation = "0 0 1 4.7124" scale="0.4 0.4 1">
+                    <Shape USE = "porta_baixo"></Shape>
+            </Transform>
+
+
+
+<!-- luzes  traseiras-->
+            <Transform translation = "1.5 -0.78 0" scale ="0.8 0.9 0.9">
+                    <Shape USE = "farol"></Shape>
+            </Transform>
+            
+            <Transform translation = "1.5 0.78 0" scale ="0.8 0.9 0.9">
+                    <Shape USE = "farol"></Shape>
+            </Transform>
+          
+            <Transform translation = "1.5 1.1 0" >
+                    <Shape USE = "pisca_traseiro"></Shape>
+            </Transform>
+
+            <Transform translation = "1.5 -1.1 0" >
+                    <Shape USE = "pisca_traseiro"></Shape>
+            </Transform>
+            
+
+<!-- luzes frente-->
+            
+            <Transform translation = "-2.9 0.88 0.93" rotation = "1 0 0 4.7124" scale = '0.3 0.5 0.2'>
+                    <Shape USE = "piscas_frente"></Shape>
+            </Transform>
+
+            <Transform translation = "-2.9 -0.88 0.68" rotation = "1 0 0 1.5708" scale = '0.3 0.5 0.2'>
+                    <Shape USE = "piscas_frente"></Shape>
+            </Transform>
+
+
+            <Transform translation = "-2.85 -0.73 0.8">
+                    <Shape USE = "farol"></Shape>
+            </Transform>
+            
+            <Transform translation = "-2.85 0.73 0.8">
+                    <Shape USE = "farol"></Shape>
+            </Transform>
+
+
+
+<!-- vidros frente-->
+            <Transform translation = "-2 -1.01 1.5" >
+                    <Shape USE = "vidro_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "-2 0.96 1.5" >
+                    <Shape USE = "vidro_lateral"></Shape>
+            </Transform>
+
+            <Transform translation = "-2.47 0 1.9"  rotation = "0 1 0 0.49" >
+                <shape>
+                    <appearance>
+                       <ImageTexture url="./media/vidro.png">
+                        <ImageTexture/>
+                        
+                    </appearance>
+                    <box size = ".05 1.8 1.2">
+                    </box>
+                </shape>
+
+            </Transform>
+
+
+<!-- guarda lamas frente-->
+
+            <transform translation = "-2.7 0 0.3"  rotation = " 0 0 1 1.5708" scale ="1.5 1 1" def = "guarda_lamas_frente">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="0.8 0.8 0.8"> 
+                        </material>
+                    </appearance>
+                    <extrusion
+                        solid="false"
+                        crossSection="
+                            0.25 0.1
+                            0.25 -0.4
+                            0.17 -0.4 
+                            0.17 0
+                            -0.17 0
+                            -0.17 -0.4
+                            -0.25 -0.4
+                            -0.25 0.1
+                            0.25 0.1
+                            "
+                        spine="
+                            0 0 0
+                            0 0.6 0"
+                    ></extrusion>
+                </shape>
+            </transform>
+
+
+
+        </scene>
+        </x3d>
+        </table>
+        </td>
+        
+    	<h3>Piaggio Ape 50cc </h3>
+    	<h4>Engenharia Informática - Computação Gráfica &mdash; 2016-17</h4>
+    </body> 
+</html>    
