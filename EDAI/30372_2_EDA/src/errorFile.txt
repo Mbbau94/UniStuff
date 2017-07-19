@@ -1,0 +1,31 @@
+			 ficheiro com sugestoes 
+
+
+palavra errada: liha
+Sugestoes: 
+| null | lha | lia | linha | ilha 
+
+palavra errada: bm
+Sugestoes: 
+| null | bem | bom | bum 
+
+palavra errada: trabalh
+Sugestoes: 
+| null | trabalha | trabalhe | trabalho 
+
+palavra errada: nsto
+Sugestoes: 
+| null | insto | nisto 
+
+palavra errada: qe
+Sugestoes: 
+| null | e | que 
+
+palavra errada: ach
+Sugestoes: 
+| null | ah | acha | ache | acho | Bach 
+
+palavra errada: casa
+Sugestoes: 
+| null | asa | cansa | casai | casal | casam | casar | casas | casca | caspa | casta | causa 
+
