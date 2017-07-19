@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <h:head>
+        <title>Espaco</title>
+    </h:head>
+    <h:body>
+        
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">      
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" style="font-weight:bold">
+                        <li>
+                            <a href="index.xhtml">Home</a>
+                        </li>
+                        <li>
+                            <a href="EspacoOcupado.xhtml">Espaço Ocupado</a>
+                        </li>
+                        <li>
+                            <a href="FazerReserva.xhtml">Fazer reserva</a>
+                        </li>
+                        <li>
+                            <a href="ListaCampos.xhtml">Lista de Campos</a>
+                        </li>
+                        <li>
+                            <a href="ListaReservas.xhtml">Listar Reservas</a>
+                        </li>                    
+                    </ul>
+                </div>                
+            </div>            
+        </nav>    
+        <h:form>
+            <h2>Espaço ocupado ou nao?</h2>
+            <p>
+                <output jsf:id="confirm" name="confirm"> 
+                    O espaco  #{clubepgBean.idcampo} está   
+#{clubepgBean.ocupado}  em #{clubepgBean.dateEO} às #{clubepgBean.horaEO} horas. 
+ 
+                </output>
+            </p>
+            <p>
+                <h:commandButton value="Back" onclick = "window.history.back()"/>
+            </p>
+        </h:form>
+    </h:body>
+</html>

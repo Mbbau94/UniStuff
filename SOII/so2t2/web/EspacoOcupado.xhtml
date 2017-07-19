@@ -1,0 +1,92 @@
+<!--
+
+    Copyright (c) 2013 Oracle and/or its affiliates. All rights reserved.
+
+    You may not modify, use, reproduce, or distribute this software except in
+    compliance with  the terms of the License at:
+    http://java.net/projects/javaeetutorial/pages/BerkeleyLicense
+
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <h:head>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet name="css/stylesheet.css" />
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">      
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" style="font-weight:bold">
+                        <li>
+                            <a href="index.xhtml">Home</a>
+                        </li>
+                        <li>
+                            <a href="EspacoOcupado.xhtml">Espaco Ocupado</a>
+                        </li>
+                        <li>
+                            <a href="EspacoOcupado.xhtml">Fazer reserva</a>
+                        </li>
+                        <li>
+                            <a href="ListaCampos.xhtml">Lista de Campos</a>
+                        </li>  
+                         <li>
+                            <a href="ListaReservas.xhtml">Listar Reservas</a>
+                        </li>
+                    </ul>
+                </div>                
+            </div>            
+        </nav>  
+        
+        <h:form prependId="false">
+            <h2>CAMPO OCUPADO </h2>
+            <p>Verificar se um campo esta ocupado</p>
+            <p>
+                <label>Insira o campo a verificar disponibilidade:</label>
+                <br/>
+                <input type="text" id="idcampo" name="idcampo" jsf:id="idcampo"
+                       placeholder="ex: campo3" value="#{clubepgBean.idcampo}" 
+                       required="required" title="insira o campo."/>
+            </p>
+
+            <p>
+                <label>Performance Date:</label>
+                <br/>
+                <input type="date" jsf:id="dateEO" name="dateEO" 
+                       value="#{clubepgBean.dateEO}" required="required"
+                       title="Enter or choose a date."/>
+            </p>
+            
+            
+            <p>
+                <label>Insira as horas</label>
+                <br/>
+                <input type="text" id="horaEO" name="horaEO" jsf:id="horaEO"
+                       placeholder="ex: 18:30" value="#{clubepgBean.horaEO}" 
+                       required="required" title="insira a hora."/>
+            </p>
+            
+            <p><strong>Note:</strong> o campo #{clubepgBean.idcampo} esta #{clubepgBean.ocupado}" .</p>
+            
+            <p>
+             <h:commandButton value="ok"
+                              action="confirmEspaco"
+                              onclick="#{clubepgBean.espacoOcupado()}"  />
+             <input jsf:id="clear" name="clear" value="Clear" type="submit">
+                    <f:ajax render="@all" listener="#{clubepgBean.clear}"/>
+                </input>
+            </p>
+          
+ 
+            
+            <p>
+                <h:commandButton value="Back" onclick = "window.history.back()"/>
+            </p>
+        </h:form>
+    </h:body>
+</html>

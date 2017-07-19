@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <h:head>
+        <title>Fazer Reserva</title>
+    </h:head>
+    <h:body>
+        
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">      
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" style="font-weight:bold">
+                        <li>
+                            <a href="index.xhtml">Home</a>
+                        </li>
+                        <li>
+                            <a href="EspacoOcupado.xhtml">Espaco Ocupado</a>
+                        </li>
+                        <li>
+                            <a href="FazerReserva.xhtml">Fazer reserva</a>
+                        </li>
+                        <li>
+                            <a href="ListaCampos.xhtml">Lista de Campos</a>
+                        </li>          
+                        <li>
+                            <a href="ListaReservas.xhtml">Listar Reservas</a>
+                        </li>
+                    </ul>
+                </div>                
+            </div>            
+        </nav> 
+        <h:outputStylesheet name="css/stylesheet.css" />
+
+        <h:form prependId="false">
+            <h2>Ticket Reservation Form</h2>
+            <p>Welcome to the reservation form for <i>Hit Broadway Musical</i>!</p>
+            <p>
+                <label>Nome:</label>
+                <br/>
+                <input type="text" jsf:id="full_name" name="full_name" 
+                       placeholder="John Doe" value="#{clubepgBean.name}" 
+                       required="required" title="Enter your name."/>
+            </p>
+            <p>
+                <label>Numero de telefone:</label>
+                <br/>
+                <input type="text" jsf:id="numeroTele" name="numeroTele" 
+                       value="#{clubepgBean.numeroTele}" required="required"
+                       title="Enter email."/>
+            </p>
+            
+
+            <p>
+                <label>Data de Reserva:</label>
+                <br/>
+                <input type="date" jsf:id="date" name="date" 
+                       value="#{clubepgBean.date}" required="required"
+                       title="Enter or choose a date."/>
+            </p>
+            
+            <p>
+                <label>Hora inicial:</label>
+                <br/>
+                <input type="text" jsf:id="horaI" name="horaI" 
+                       placeholder="13:00" value="#{clubepgBean.horaI}" 
+                       required="required" title="Insira hora inicial da reserva"/>
+            </p>
+            
+            <p>
+                <label>Hora final:</label>
+                <br/>
+                <input type="text" jsf:id="horaF" name="horaF" 
+                       placeholder="13:30" value="#{clubepgBean.horaF}" 
+                       required="required" title="Insira hora final da reserva"/>
+            </p>
+            
+            <p>
+                <label>Campo a reservar:</label>
+                <br/>
+                <input type="text" jsf:id="idcampo" name="idcampo" 
+                       placeholder="campo1" value="#{clubepgBean.idcampo}" 
+                       required="required" title="campo a reservar"/>
+            </p>
+            
+            
+            <p>
+                <label>Numero de utilizadores:</label>
+                <br/>
+                <input type="number" jsf:id="tickets"  
+                       value="#{clubepgBean.numeroUsers}" min="1" max="10" 
+                       required="required" 
+                       title="Enter a number between 1 and 10 inclusive.">
+                </input>
+            </p>
+            <p>
+                <label>Ticket Price:</label>
+                <br/>
+                <h:inputText id="price" p:type="number" 
+                             value="#{clubepgBean.price}" p:min="80" p:max="120"
+                             p:step="20" p:required="required" 
+                             p:title="Enter a price: 80, 100, 120, or 140.">
+                    <f:ajax event="change" render="total" 
+                            listener="#{clubepgBean.calculateTotal}"/>
+                </h:inputText>
+            </p>
+
+            <p>
+                <label>Estimated Total:</label>
+                <br/>
+                <output jsf:id="total" name="total">#{clubepgBean.totalValue}</output>
+            </p>
+            <p>
+             <h:commandButton value="ok"
+                             
+                              onclick="#{clubepgBean.fazerReserva()}"  />
+            </p>
+            
+            
+            <p>
+                
+                <h:commandButton value="Back" onclick = "window.history.back()"/>
+            </p>
+        </h:form>
+
+        <script>
+            function check(input) {
+                if (input.value !== document.getElementById('email').value) {
+                    input.setCustomValidity('The two email addresses must match.');
+                } else {
+                    // input is valid -- reset the error message
+                    input.setCustomValidity('');
+                }
+            }
+        </script>
+    </h:body>
+</html>

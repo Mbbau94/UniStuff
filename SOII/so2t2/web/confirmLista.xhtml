@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <h:head>
+        <title>Lista de reservas</title>
+    </h:head>
+    <h:body>
+        
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">      
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" style="font-weight:bold">
+                        <li>
+                            <a href="index.xhtml">Home</a>
+                        </li>
+                        <li>
+                            <a href="EspacoOcupado.xhtml">Espaço Ocupado</a>
+                        </li>
+                        <li>
+                            <a href="FazerReserva.xhtml">Fazer reserva</a>
+                        </li>
+                        <li>
+                            <a href="ListaCampos.xhtml">Lista de Campos</a>
+                        </li>
+                        <li>
+                            <a href="ListaReservas.xhtml">Listar Reservas</a>
+                        </li>                    
+                    </ul>
+                </div>                
+            </div>            
+        </nav> 
+        
+        <div class="container">
+            <div class="row">
+                <h3>Lista de reservas para o #{clubepgBean.tipocampo} </h3>
+                <h:dataTable value="#{clubepgBean.listaReservas()}" var="a" styleClass="table table-bordered table-striped">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Espaço" />
+                        </f:facet>                     
+                        #{a.tipocampo}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Hora1" />
+                        </f:facet>                         
+                        #{a.horaI}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="HoraF" />
+                        </f:facet>                    
+                        #{a.horaF}
+                    </h:column>                   
+                </h:dataTable>
+                
+                <p>
+                <h:commandButton value="Back" onclick = "window.history.back()"/>
+                </p>
+            </div>
+        </div>
+        
+    </h:body>
+</html>
+
+ 
